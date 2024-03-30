@@ -1,0 +1,14 @@
+# Load necessary packages
+library(seriation)
+
+# Read your insurance dataset (replace the path below)
+insurance_data <- read.csv("C:/Users/HP/OneDrive/Desktop/insurance.csv")
+
+# Load the CHAMELEON data sets
+data(Chameleon)
+
+# Plot the CHAMELEON data sets (you can adjust the size with 'cex')
+plot(chameleon_ds4, cex = 0.1)
+plot(chameleon_ds5, cex = 0.1)
+plot(chameleon_ds7, cex = 0.1)
+plot(chameleon_ds8, cex = 0.1)

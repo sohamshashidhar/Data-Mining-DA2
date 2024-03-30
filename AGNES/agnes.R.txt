@@ -1,0 +1,17 @@
+# Load required library
+library(cluster)
+
+# Load the dataset
+data <- read.csv("C:/Users/HP/OneDrive/Desktop/insurance.csv")
+data
+# Convert non-numeric columns to numeric (if possible)
+data <- data[, sapply(data, is.numeric)]  # Keep only numeric columns
+
+# Check data types
+str(data)
+
+# AGNES (Hierarchical Clustering)
+agnes_model <- agnes(data)
+
+# Plot dendrogram
+plot(agnes_model, main = "Dendrogram for AGNES")

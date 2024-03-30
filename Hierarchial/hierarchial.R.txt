@@ -1,0 +1,36 @@
+# Read the dataset
+data <- read.csv("C:/Users/HP/OneDrive/Desktop/insurance.csv")
+
+# Check the structure of the dataset
+str(data)
+
+# Handle missing values by removing rows containing NAs
+data <- na.omit(data)
+
+# Convert to numeric matrix
+data <- as.matrix(data)
+
+# Check for NA, NaN, and Inf values
+if (any(is.na(data)) || any(is.nan(data)) || any(is.infinite(data))) {
+  # Get indices of problematic values
+  na_indices <- which(is.na(data))
+  nan_indices <- which(is.nan(data))
+  inf_indices <- which(is.infinite(data))
+  
+  # Print problematic indices
+  print("Indices of NA values:")
+  print(na_indices)
+  print("Indices of NaN values:")
+  print(nan_indices)
+  print("Indices of Inf values:")
+  print(inf_indices)
+  
+  # Stop execution and notify user
+  stop("There are NA, NaN, or Inf values in the dataset. Please handle them before proceeding.")
+}
+
+# Perform hierarchical clustering
+hc_model <- hclust(dist(data, method = "euclidean"), method = "complete") # specify the linkage method
+hc_model
+# Plot the dendrogram
+plot(hc_model)

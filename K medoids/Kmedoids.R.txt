@@ -1,0 +1,27 @@
+# Load libraries
+library(cluster)
+
+# Set working directory (replace with your actual path)
+setwd("C:\\Users\\HP\\OneDrive\\Desktop")
+
+# Read data
+data <- read.csv("insurance.csv")
+
+# Choose number of clusters (experiment with different values)
+k <- 3
+
+# Perform K-Medoids clustering
+kmedoids.results <- pam(data, k = k)
+
+# Get cluster labels for each data point
+cluster.labels <- kmedoids.results$cluster
+
+# Visualize clusters with pie chart (assuming categorical outcome)
+pie(table(cluster.labels), main = "Distribution of Data Points in Clusters")
+
+# Optional: Silhouette analysis for cluster quality assessment
+library(factoextra)
+
+sil.houette <- silhouette(kmedoids.results)
+fviz_silhouette(sil.houette, k = k)
+
